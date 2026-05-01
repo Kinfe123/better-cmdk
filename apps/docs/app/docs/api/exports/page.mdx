@@ -1,0 +1,27 @@
+---
+title: "Public Exports"
+description: "Reference for choosing the correct public import path for the workflow you are building."
+order: 50
+---
+
+# Public Exports
+
+Reference for choosing the correct public import path for the workflow you are building.
+## Package Entry Points
+better cmdk exposes a small set of public import paths from `better-cmdk`. Start with the root package for the main endpoint, router, or middleware helpers, then move to a subpath when you need a typed client or a runtime adapter.
+## Example Imports
+Use the import reference below to choose the smallest package entrypoint that matches your framework or configuration task.
+## Import Paths
+| Import path | When to use it | Common imports |
+| --- | --- | --- |
+| `better-cmdk` | Choose this for top-level helpers, shared types, and runtime utilities from better cmdk. | `AssistantMessages`, `AssistantMessagesProps`, `Button`, `buttonVariants`, `captureException` |
+| `better-cmdk/index.css` | Choose this for the focused subpath rather than the main package entrypoint. | Use the path as the stable entrypoint. |
+| `better-cmdk/index.ts` | Choose this for the focused subpath rather than the main package entrypoint. | Use the path as the stable entrypoint. |
+| `better-cmdk/lib/utils.ts` | Choose this for the focused subpath rather than the main package entrypoint. | Use the path as the stable entrypoint. |
+| `better-cmdk/styles.css` | Choose this for the focused subpath rather than the main package entrypoint. | Use the path as the stable entrypoint. |
+| `better-cmdk/utils` | Choose this for the focused subpath rather than the main package entrypoint. | Use the path as the stable entrypoint. |
+## How To Choose
+- Start with the root package when you are defining endpoints, middleware, or routers.
+- Choose a client subpath when your app is calling those endpoints from the browser or another service.
+- Choose an adapter subpath when you are mounting the router into a runtime such as Node.
+- Prefer the narrowest stable import path that matches the job you are doing.

@@ -1,0 +1,42 @@
+---
+title: "Quickstart"
+description: "Run better cmdk with the current scripts and configuration."
+order: 10
+---
+
+# Quickstart
+
+This is the shortest path from clone to a useful first run of better cmdk. The goal is not to understand every file yet; the goal is to install dependencies and run the command or package entrypoint that proves the project is alive.
+## What You Will Accomplish
+- Prepare the project with the detected package manager.
+- Review the package scripts or library entrypoint before the first run.
+- Run the primary workflow so you can confirm the project is usable before exploring advanced docs.
+## Before You Start
+This project uses `bun` as its package manager.
+No README or example environment file defines required variables, so do not treat source-only environment reads as the first-run checklist.
+## Recommended First Run
+1. Install dependencies with `bun install`.
+2. Run `bun run dev` to exercise the main workflow.
+## Useful Commands
+These commands are useful after the first run because they are the repeatable workflows available in the project.
+- `build` runs `turbo run build` and creates the production build or compiled package artifacts.
+- `dev` runs `turbo run dev` and starts the local development workflow.
+- `typecheck` runs `turbo run typecheck` and supports the project workflow.
+## Useful CLI Options
+- `--bcmdk-background`
+- `--cmdk-input-row-height`
+- `--cmdk-item-height`
+- `--cmdk-mobile-keyboard-inset`
+- `--cmdk-mobile-sheet-top-inset`
+- `--cmdk-radius`
+- `--publish`
+- `--tw-ring-color`
+## Next Places to Read
+- better cmdk: `docs/page.mdx`
+- Installation: `docs/installation/page.mdx`
+- API Reference: `docs/api/page.mdx`
+- CLI: `docs/api/cli/page.mdx`
+- Public Exports: `docs/api/exports/page.mdx`
+- CLI Usage: `docs/api/cli/usage/page.mdx`
+- Features: `docs/features/page.mdx`
+- AI Responses: `docs/features/ai-responses/page.mdx`

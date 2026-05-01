@@ -1,0 +1,46 @@
+---
+title: "Developer Tools"
+description: "Developer tools help configure, inspect, and generate the pieces needed to run the product."
+order: 90
+---
+
+# Developer Tools
+
+Developer tools help configure, inspect, and generate the pieces needed to run the product.
+## What You Can Do
+This section explains the utilities that help developers inspect, configure, or generate parts of the product. These tools are not just UI screens; they are shortcuts for common setup, debugging, schema, email, or integration work.
+## Key Ideas
+- developer tools
+- generators
+- inspectors
+- visual editors
+- debug workflows
+## Where You'll See It
+This page starts from the parts of the product a reader can actually recognize.
+
+- Readers usually meet this workflow through **Command**, **Command Menu**.
+- The README already calls out related context in **2 Optional Override Better Cmdk Tokens**, **Advanced Custom Children**, **Ai Chat**.
+## How It Works
+1. Choose the tool that matches the setup or debugging task.
+2. Review generated code or detected state before applying it to the host project.
+3. Use tool output as a starting point, then validate it against the application's real configuration.
+## From The README
+The README already describes this area in project language. These excerpts are the reader-facing baseline before adding more examples.
+
+### CommandAction
+- `name` - Required. Unique key used for search matching
+- `label` - Display text (falls back to name)
+- `description` - Required. Action description used by AI/tooling
+- `group` - Group heading — actions with the same group appear together
+- `icon` - Icon rendered before the label
+- `shortcut` - Keyboard shortcut hint (right aligned)
+- 7 more settings are described in the README.
+
+### CommandMenu Props
+- `actions` - Declarative action definitions
+- `actionsPlaceholder` - Input placeholder
+- `actionsAskAILabel` - Label for the AI trigger
+- `open` - Controlled open state
+- `onOpenChange` - Open state callback
+- `corners` - "md" \
+- 7 more settings are described in the README.

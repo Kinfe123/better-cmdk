@@ -1,0 +1,31 @@
+---
+title: "CLI and Development Tools"
+description: "The CLI page explains terminal-driven workflows, command entrypoints, development tooling, and the flags developers use while working locally."
+order: 160
+---
+
+# CLI and Development Tools
+
+The CLI page explains terminal-driven workflows, command entrypoints, development tooling, and the flags developers use while working locally.
+## Purpose and Scope
+This area owns terminal-first workflows such as local development, setup helpers, watch mode, and project automation. It is where maintainers and contributors interact with the repo without opening the browser.
+## What Lives Here
+- `packages/better-cmdk/components/ui/command-menu.tsx` - Command Menu reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/command.tsx` - Command reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/tsdown.config.ts` - Repository file related to this page.
+## Useful Commands
+- `build` runs `turbo run build` and creates the production build or compiled package artifacts.
+- `dev` runs `turbo run dev` and starts the local development workflow.
+- `typecheck` runs `turbo run typecheck` and supports the project workflow.
+## Useful Options
+- `--cmdk-input-row-height`
+- `--bcmdk-background`
+- `--cmdk-item-height`
+- `--cmdk-mobile-keyboard-inset`
+- `--cmdk-mobile-sheet-top-inset`
+- `--cmdk-radius`
+- `--tw-ring-color`
+- `--publish`
+## Related Areas
+- [Build System and Package Structure](/docs/build/package-structure) - The build page explains how the repository is packaged, built, exported, and prepared for local development or distribution.
+- [Frontend Application](/docs/frontend/application) - The frontend page explains the user-facing application, navigation shell, and interface workflows readers actually interact with.

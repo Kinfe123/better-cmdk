@@ -1,0 +1,27 @@
+---
+title: "Frontend Application"
+description: "The frontend page explains the user-facing application, navigation shell, and interface workflows readers actually interact with."
+order: 170
+---
+
+# Frontend Application
+
+The frontend page explains the user-facing application, navigation shell, and interface workflows readers actually interact with.
+## Purpose and Scope
+This area owns the user-facing application: navigation, page layout, interface states, and the screens where readers or operators actually interact with the product.
+## What Lives Here
+- `packages/better-cmdk/components/ui/assistant-messages.tsx` - Assistant Messages reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/button.tsx` - Button reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/chat.tsx` - Chat reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/collapsible.tsx` - Collapsible reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/confirmation.tsx` - Confirmation reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/dialog.tsx` - Dialog reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/form-components.tsx` - Form Components reusable UI component. It renders a visible part of the workflow or a focused interaction.
+- `packages/better-cmdk/components/ui/form-renderer.tsx` - Form Renderer reusable UI component. It renders a visible part of the workflow or a focused interaction.
+## How It Connects
+- The frontend translates user actions into API requests, mutations, or route transitions.
+- Shared layout, navigation, and state live here so workflow pages can explain the visible product before they describe internals.
+- Reader-facing docs should start from the screen or task, then link to backend or configuration pages only when the UI depends on them.
+## Related Areas
+- [Build System and Package Structure](/docs/build/package-structure) - The build page explains how the repository is packaged, built, exported, and prepared for local development or distribution.
+- [CLI and Development Tools](/docs/cli/tooling) - The CLI page explains terminal-driven workflows, command entrypoints, development tooling, and the flags developers use while working locally.

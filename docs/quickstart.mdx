@@ -1,0 +1,37 @@
+---
+title: "Quickstart"
+description: "Run better-cmdk with the current scripts and configuration."
+order: 10
+---
+
+# Quickstart
+
+Use this quickstart to move from a fresh checkout to the first workflow that proves better-cmdk is installed and usable.
+
+## Prerequisites
+This project uses `bun` as its package manager.
+The repository does not publish a first-run environment checklist, so begin with the package scripts and add provider keys only when a workflow asks for them.
+
+## Run locally
+1. Install dependencies with `bun install`.
+2. Run `bun run dev` to exercise the main workflow.
+
+## Repository scripts
+These commands are useful after the first run because they are the repeatable workflows available in the project.
+
+- `build`: `turbo run build` creates the production build or compiled package artifacts.
+- `dev`: `turbo run dev` starts the local development workflow.
+- `typecheck`: `turbo run typecheck` runs static checks before build or release work continues.
+
+## CLI options
+- `--bcmdk-background`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--cmdk-input-row-height`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--cmdk-item-height`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--cmdk-mobile-keyboard-inset`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--cmdk-mobile-sheet-top-inset`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--cmdk-radius`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--publish`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+- `--tw-ring-color`: Accepted by the CLI parser; run `--help` to confirm how it changes the command before using it in automation.
+
+## Next steps
+- [Features](/docs/features) - Feature guides for the main user-facing workflows.

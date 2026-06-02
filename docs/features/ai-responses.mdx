@@ -1,0 +1,87 @@
+---
+title: "AI Responses"
+description: "Configure and extend the built-in AI chat inside CommandMenu."
+order: 1
+---
+
+# AI Responses
+
+better-cmdk ships with a built-in AI chat mode that lets users ask questions directly inside the command palette. This guide covers the default setup, how to swap in your own endpoint, how to connect an external chat provider, and how AI agents can invoke your declared actions on the user's behalf.
+
+## Developer trial endpoint
+
+Out of the box, `CommandMenu` points to `https://better-cmdk.com/api/chat` — a free developer trial service that requires no signup. It is rate-limited to 10 requests per 10 minutes, which is enough to verify the integration before you wire up production infrastructure.
+
+```tsx
+// Uses the hosted trial endpoint automatically
+<CommandMenu actions={actions} open={open} onOpenChange={setOpen} />
+```
+
+Users switch to chat mode with `⌘ Enter` or by selecting the "Ask AI" item in the list.
+
+## Custom chat endpoint
+
+For production, point `chatEndpoint` at your own URL. The endpoint receives a standard streaming chat request compatible with the Vercel AI SDK.
+
+```tsx
+<CommandMenu
+  actions={actions}
+  chatEndpoint="/api/chat"
+  open={open}
+  onOpenChange={setOpen}
+/>
+```
+
+To disable built-in chat entirely — for example, if you only want command search — set `chatEndpoint` to `null`:
+
+```tsx
+<CommandMenu
+  actions={actions}
+  chatEndpoint={null}
+  open={open}
+  onOpenChange={setOpen}
+/>
+```
+
+## External chat integration
+
+If you're already managing a chat session with the Vercel AI SDK's `useChat` hook (or a compatible library), you can pass the session object directly via the `chat` prop:
+
+```tsx
+<CommandMenu
+  actions={actions}
+  chat={externalChat}
+  open={open}
+  onOpenChange={setOpen}
+/>
+```
+
+This lets you share conversation state between the command palette and other parts of your UI, and enables agentic providers like [modifywithai](https://modifywithai.com) to invoke your declared actions on behalf of the user.
+
+## AI-invoked actions
+
+When an external chat provider like modifywithai is connected, the AI agent can call your `actions` directly. Actions with `approvalRequired: true` show a confirmation UI before executing, keeping users in control.
+
+The `AssistantMessages` component handles rendering the conversation, tool invocations, approval gates, and task status automatically. You don't need to wire these up manually when using the `actions` prop — `CommandMenu` composes them internally.
+
+## Persisting chat history
+
+Pass a `historyStorageKey` string to persist conversations in `localStorage` across page loads. Combine it with `maxConversations` to cap how many threads are stored:
+
+```tsx
+<CommandMenu
+  actions={actions}
+  open={open}
+  onOpenChange={setOpen}
+  historyStorageKey="my-app-command-history"
+  maxConversations={10}
+/>
+```
+
+## Telemetry
+
+better-cmdk collects anonymous error and performance data via Sentry to improve reliability. No personally identifiable information is sent — user data, cookies, headers, and breadcrumbs are stripped before transmission. To opt out, set the environment variable:
+
+```bash
+BETTER_CMDK_TELEMETRY_DISABLED=1
+```

@@ -1,0 +1,82 @@
+---
+title: "Features"
+description: "Feature guides for the main user-facing workflows in better-cmdk."
+order: 0
+---
+
+# Features
+
+better-cmdk is more than a search box. This section covers the features that distinguish it from a bare cmdk wrapper: a declarative action model, built-in AI chat, mobile sheet mode with swipe gestures, composable children for custom rendering, and a theming system that stays out of your global styles.
+
+## CommandMenu props
+
+Every feature is controlled through props on `CommandMenu`. Here's the full reference:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `actions` | `readonly CommandAction[]` | — | Declarative action definitions |
+| `actionsPlaceholder` | `string` | `"Search or ask AI..."` | Input placeholder |
+| `actionsAskAILabel` | `string` | `"Ask AI"` | Label for the AI trigger |
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state callback |
+| `corners` | `"none" \| "sm" \| "md" \| "lg" \| "xl"` | `"xl"` | Border radius preset |
+| `borderColor` | `string` | — | Custom ring color |
+| `chatEndpoint` | `string \| null` | `"https://better-cmdk.com/api/chat"` | AI chat endpoint. Set your own URL for production or `null` to disable. |
+| `chat` | `ExternalChat` | — | External chat integration (e.g. Vercel AI SDK) |
+| `onModeChange` | `(mode: CommandMenuMode) => void` | — | Fires when switching between command and chat mode |
+| `historyStorageKey` | `string` | — | localStorage key for persisting chat history |
+| `maxConversations` | `number` | — | Maximum number of saved chat conversations |
+| `mobile` | `CommandMenuMobileOptions` | Enabled with defaults | Mobile sheet and gesture configuration |
+
+## Declarative actions
+
+The `actions` prop is the recommended way to define commands. Each entry in the array is a `CommandAction` object:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `name` | `string` | **Required.** Unique key used for search matching |
+| `label` | `string` | Display text (falls back to `name`) |
+| `description` | `string` | **Required.** Action description used by AI/tooling |
+| `group` | `string` | Group heading — actions sharing the same value appear together |
+| `icon` | `ReactNode` | Icon rendered before the label |
+| `shortcut` | `string` | Keyboard shortcut hint displayed on the right |
+| `keywords` | `string[]` | Extra search terms beyond name and label |
+| `semanticKey` | `string` | Optional identity for overlap detection across libraries |
+| `inputSchema` | `Record<string, { type; description?; required? }>` | Argument schema for AI-routed actions |
+| `approvalRequired` | `boolean` | Triggers an approval gate when an AI agent invokes the action |
+| `disabled` | `boolean` | Grays out the item and makes it non-selectable |
+| `execute` | `(options: Record<string, unknown>) => void` | **Required.** Runs when the action is selected |
+| `onSelect` | `() => void` | Optional direct-selection override (ignored by AI providers) |
+
+## Mobile support
+
+better-cmdk includes a mobile-first sheet mode that activates automatically on viewports below 900px. The sheet opens via a swipe-up gesture from the lower-right corner, and the layout adjusts around the software keyboard using `visualViewport`.
+
+```tsx
+<CommandMenu
+  open={open}
+  onOpenChange={setOpen}
+  actions={actions}
+  mobile={{
+    enabled: true,
+    layout: "keyboard-last",
+    showGestureHint: true,
+    gesture: {
+      holdMs: 350,
+      swipeUpPx: 56,
+    },
+    showQuickActions: true,
+    quickActionsCount: 4,
+  }}
+/>
+```
+
+To hide the idle corner affordance without disabling gestures: `mobile={{ showGestureHint: false }}`. To turn off gestures entirely: `mobile={{ gesture: false }}`.
+
+## Styling
+
+better-cmdk scopes all of its styles under `.bcmdk-root`. You can customize the palette's appearance by overriding `--bcmdk-*` CSS variables, passing `className` props to individual components, or using the exported `cn()` utility for conditional class logic. See the token list in [Installation](/docs/installation) for the full set of overridable variables.
+
+## AI chat
+
+The command palette includes a built-in chat mode. Users activate it with `⌘ Enter` or by selecting the "Ask AI" item. For details on configuring the chat endpoint, connecting an external provider, and agentic action execution, see [AI Responses](/docs/features/ai-responses).

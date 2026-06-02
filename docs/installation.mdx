@@ -1,0 +1,77 @@
+---
+title: "Installation"
+description: "Install and configure better-cmdk."
+order: 10
+---
+
+# Installation
+
+better-cmdk is a React library that requires React 18 or later and Tailwind CSS v4.
+
+## Install the package
+
+```bash
+npm install better-cmdk
+```
+
+```bash
+pnpm add better-cmdk
+```
+
+```bash
+bun add better-cmdk
+```
+
+## Install peer dependencies
+
+If your project doesn't already have React and Tailwind CSS v4 installed:
+
+```bash
+npm install react react-dom tailwindcss
+```
+
+## Import the stylesheet
+
+better-cmdk ships a precompiled stylesheet you need to import alongside your Tailwind base. Add both imports to your main CSS file:
+
+```css
+@import "tailwindcss";
+@import "better-cmdk";
+```
+
+This is all the CSS setup you need. The library's styles are scoped under `.bcmdk-root` so they won't bleed into the rest of your app.
+
+## Override design tokens (optional)
+
+You can customize the look of the command palette by overriding CSS variables on `.bcmdk-root`. Every color token uses OKLCH lightness, chroma, and hue triplets:
+
+```css
+.bcmdk-root {
+  --bcmdk-radius: 0.625rem;
+  --bcmdk-background: 1 0 0;
+  --bcmdk-foreground: 0.145 0 0;
+  --bcmdk-primary: 0.205 0 0;
+  --bcmdk-primary-foreground: 0.985 0 0;
+  --bcmdk-muted: 0.97 0 0;
+  --bcmdk-muted-foreground: 0.556 0 0;
+  --bcmdk-border: 0.922 0 0;
+  --bcmdk-input: 0.922 0 0;
+  --bcmdk-ring: 0.708 0 0;
+}
+```
+
+You can also override layout tokens to match your app's density:
+
+```css
+.bcmdk-root {
+  --cmdk-input-row-height: 48px;
+  --cmdk-item-height: 36px;
+  --cmdk-radius: 0.5rem;
+}
+```
+
+> **Note:** Token overrides only affect the command palette. Nothing outside `.bcmdk-root` is changed.
+
+## Verify the install
+
+After setup, head to [Quickstart](/docs/quickstart) to render your first command palette and confirm everything is wired up correctly.
